@@ -62,7 +62,8 @@ local function FloatingTerminal()
 		end
 	end
 	if not has_terminal then
-		vim.fn.termopen(os.getenv("SHELL"))
+		local shell = vim.o.shell
+		vim.fn.termopen(shell)
 	end
 
 	terminal_state.is_open = true
@@ -87,3 +88,4 @@ vim.keymap.set("t", "<Esc>", function()
 		terminal_state.is_open = false
 	end
 end, { noremap = true, silent = true, desc = "Close floating terminal" })
+

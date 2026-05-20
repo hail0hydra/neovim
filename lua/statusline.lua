@@ -6,24 +6,25 @@
 local cached_branch = ""
 local last_check = 0
 local function git_branch()
-    local now = vim.loop.now()
-    if now - last_check > 5000 then -- Check every 5 seconds
-        cached_branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
-        last_check = now
-    end
-    if cached_branch ~= "" then
-        return "\u{e725} " .. cached_branch .. " " -- nf-dev-git_branch
-    end
-    return ""
+	local now = vim.loop.now()
+	if now - last_check > 5000 then -- Check every 5 seconds
+		-- cached_branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
+		cached_branch =
+			vim.fn.system([[cmd /c "for /f "delims=" %i in ('git branch --show-current 2^>nul') do @set /p=%i<nul"]])
+		last_check = now
+	end
+	if cached_branch ~= "" then
+		return "\u{e725} " .. cached_branch .. " " -- nf-dev-git_branch
+	end
+	return ""
 end
-
 
 -- File type with Nerd Font icon
 local function file_type()
-    local ft = vim.bo.filetype
-    local icons = {
-        lua = "\u{e620} ", -- nf-dev-lua
-        python = "\u{e73c} ", -- nf-dev-python
+	local ft = vim.bo.filetype
+	local icons = {
+		lua = "\u{e620} ", -- nf-dev-lua
+		python = "\u{e73c} ", -- nf-dev-python
 		javascript = "\u{e74e} ", -- nf-dev-javascript
 		typescript = "\u{e628} ", -- nf-dev-typescript
 		javascriptreact = "\u{e7ba} ",
@@ -59,38 +60,37 @@ local function file_type()
 		vue = "\u{fd42} ", -- nf-md-vuejs
 		svelte = "\u{e697} ",
 		astro = "\u{e628} ",
-    }
+	}
 
-    if ft == "" then
-        return " \u{f15b} " -- nf-fa-file_o
-    end
+	if ft == "" then
+		return " \u{f15b} " -- nf-fa-file_o
+	end
 
-    return ((icons[ft] or " \u{f15b} ") .. ft)
+	return ((icons[ft] or " \u{f15b} ") .. ft)
 end
-
 
 -- File size with Nerd Font icon
 local function file_size()
-    local size = vim.fn.getfsize(vim.fn.expand("%"))
-    if size < 0 then
-        return ""
-    end
-    local size_str
-    if size < 1024 then
-        size_str = size .. "B"
-    elseif size < 1024 * 1024 then
-        size_str = string.format("%.1fK", size / 1024)
-    else
-        size_str = string.format("%.1fM", size / 1024 / 1024)
-    end
-    return " \u{f016} " .. size_str .. " " -- nf-fa-file_o
+	local size = vim.fn.getfsize(vim.fn.expand("%"))
+	if size < 0 then
+		return ""
+	end
+	local size_str
+	if size < 1024 then
+		size_str = size .. "B"
+	elseif size < 1024 * 1024 then
+		size_str = string.format("%.1fK", size / 1024)
+	else
+		size_str = string.format("%.1fM", size / 1024 / 1024)
+	end
+	return " \u{f016} " .. size_str .. " " -- nf-fa-file_o
 end
 
 -- Mode indicators with Nerd Font icons
 local function mode_icon()
-    local mode = vim.fn.mode()
-    local modes = {
-        	n = " \u{f121} CHILLING",
+	local mode = vim.fn.mode()
+	local modes = {
+		n = " \u{f121} CHILLING",
 		i = " \u{f11c}  INSERT",
 		v = " \u{f0168} VISUAL",
 		V = " \u{f0168} V-LINE",
@@ -104,7 +104,7 @@ local function mode_icon()
 		["!"] = " \u{f489} SHELL",
 		t = " \u{f120} TERMINAL",
 	}
-    return modes[mode] or (" \u{f059} " .. mode)
+	return modes[mode] or (" \u{f059} " .. mode)
 end
 
 _G.mode_icon = mode_icon
@@ -115,7 +115,6 @@ _G.file_size = file_size
 vim.cmd([[
     highlight StatusLineBold gui=bold cterm=bold
 ]])
-
 
 -- Function to change statusline based on window focus
 local function setup_dynamic_statusline()
@@ -147,3 +146,4 @@ local function setup_dynamic_statusline()
 end
 
 setup_dynamic_statusline()
+
