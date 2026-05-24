@@ -20,6 +20,8 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
+	-- Snippers
+	"https://github.com/rafamadriz/friendly-snippets",
 })
 
 local function packadd(name)
@@ -37,6 +39,7 @@ packadd("mason.nvim")
 packadd("blink.cmp")
 packadd("efmls-configs-nvim")
 packadd("LuaSnip")
+packadd("friendly-snippets")
 
 --===============================
 -- PLUGIN SETUPS
@@ -198,3 +201,4 @@ end, { desc = "Toggle inline blame" })
 vim.keymap.set("n", "<leader>hd", function()
 	require("gitsigns").diffthis()
 end, { desc = "Diff this" })
+

@@ -125,13 +125,23 @@ require("blink.cmp").setup({
 		preset = "none",
 		["<C-Space>"] = { "show", "hide" },
 		["<CR>"] = { "accept", "fallback" },
+		-- ["<Tab>"] = { "accept", "snippet_forward", "fallback" },
+		-- ["<S-Tab>"] = { "snippet_backward", "fallback" },
 		["<Tab>"] = { "select_next", "fallback" },
 		["<S-Tab>"] = { "select_prev", "fallback" },
 		["<C-j>"] = { "snippet_forward", "fallback" },
 		["<C-k>"] = { "snippet_backward", "fallback" },
 	},
 	appearance = { nerd_font_variant = "mono" },
-	completion = { menu = { auto_show = true } },
+	-- completion = { menu = { auto_show = true } },
+	completion = {
+		menu = {
+			auto_show = true,
+		},
+		accept = {
+			auto_brackets = { enabled = true },
+		},
+	},
 	sources = { default = { "lsp", "path", "buffer", "snippets" } },
 	snippets = {
 		expand = function(snippet)
@@ -162,6 +172,13 @@ vim.lsp.config("bashls", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("gopls", {})
 vim.lsp.config("clangd", {})
+vim.lsp.config("html", {})
+vim.lsp.config("cssls", {
+	filetypes = {
+		"css",
+		"html",
+	},
+})
 
 do
 	local luacheck = require("efmls-configs.linters.luacheck")
@@ -237,5 +254,10 @@ vim.lsp.enable({
 	"gopls",
 	"clangd",
 	"efm",
+	"html",
+	"cssls",
 })
+
+-- snippets
+require("luasnip.loaders.from_vscode").lazy_load()
 
