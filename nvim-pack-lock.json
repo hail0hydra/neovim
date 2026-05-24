@@ -13,6 +13,10 @@
       "rev": "5dc52088c231f2721f545570fcb541b04802ce6b",
       "src": "https://github.com/creativenull/efmls-configs-nvim"
     },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
     "fzf-lua": {
       "rev": "3ff77862f6c62f7b850668435ae43aa026de8758",
       "src": "https://www.github.com/ibhagwan/fzf-lua"
@@ -20,6 +24,10 @@
     "gitsigns.nvim": {
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://www.github.com/lewis6991/gitsigns.nvim"
+    },
+    "live-server.nvim": {
+      "rev": "f1a2defb7bc3bfc37bcb455fafdf6d61113d71c8",
+      "src": "https://git.barrettruth.com/barrettruth/live-server.nvim"
     },
     "mason.nvim": {
       "rev": "cbf8d285e1462dd24acf3507817be2bbcb035919",

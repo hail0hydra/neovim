@@ -20,6 +20,12 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
+
+	-- snippets
+	"https://github.com/rafamadriz/friendly-snippets",
+
+	-- live server
+	"https://git.barrettruth.com/barrettruth/live-server.nvim",
 })
 
 local function packadd(name)
@@ -37,6 +43,8 @@ packadd("mason.nvim")
 packadd("blink.cmp")
 packadd("efmls-configs-nvim")
 packadd("LuaSnip")
+packadd("friendly-snippets")
+packadd("live-server.nvim")
 
 --===============================
 -- PLUGIN SETUPS

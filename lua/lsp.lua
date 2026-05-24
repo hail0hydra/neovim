@@ -131,7 +131,14 @@ require("blink.cmp").setup({
 		["<C-k>"] = { "snippet_backward", "fallback" },
 	},
 	appearance = { nerd_font_variant = "mono" },
-	completion = { menu = { auto_show = true } },
+	completion = {
+		menu = {
+			auto_show = true,
+		},
+		accept = {
+			auto_brackets = { enabled = true },
+		},
+	},
 	sources = { default = { "lsp", "path", "buffer", "snippets" } },
 	snippets = {
 		expand = function(snippet)
@@ -162,6 +169,18 @@ vim.lsp.config("bashls", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("gopls", {})
 vim.lsp.config("clangd", {})
+vim.lsp.config("html", {
+	filetypes = {
+		"html",
+		"php",
+	},
+})
+vim.lsp.config("cssls", {
+	filetypes = {
+		"html",
+		"css",
+	},
+})
 
 do
 	local luacheck = require("efmls-configs.linters.luacheck")
@@ -237,4 +256,9 @@ vim.lsp.enable({
 	"gopls",
 	"clangd",
 	"efm",
+	"html",
+	"cssls",
 })
+
+-- snippets
+require("luasnip.loaders.from_vscode").lazy_load()
