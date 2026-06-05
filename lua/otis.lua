@@ -1,7 +1,7 @@
+require("plugins")
 require("options")
 require("statusline")
 require("keymaps")
 require("autocmds")
-require("plugins")
 require("lsp")
 require("terminal")

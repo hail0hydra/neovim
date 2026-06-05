@@ -172,7 +172,10 @@ vim.lsp.config("bashls", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("gopls", {})
 vim.lsp.config("clangd", {})
-vim.lsp.config("html", {})
+vim.lsp.config("html", {
+	"html",
+	"php",
+})
 vim.lsp.config("cssls", {
 	filetypes = {
 		"css",
@@ -212,9 +215,9 @@ do
 			"javascriptreact",
 			"json",
 			"jsonc",
-			"lua",
+			-- "lua",
 			"markdown",
-			"python",
+			-- "python",
 			"sh",
 			"typescript",
 			"typescriptreact",

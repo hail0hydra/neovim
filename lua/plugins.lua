@@ -20,8 +20,11 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
-	-- Snippers
+	-- Snippets
 	"https://github.com/rafamadriz/friendly-snippets",
+	-- Live Server
+	"https://git.barrettruth.com/barrettruth/live-server.nvim",
+    "https://github.com/iamcco/markdown-preview.nvim",
 })
 
 local function packadd(name)
@@ -40,6 +43,8 @@ packadd("blink.cmp")
 packadd("efmls-configs-nvim")
 packadd("LuaSnip")
 packadd("friendly-snippets")
+packadd("live-server.nvim")
+packadd("markdown-preview.nvim")
 
 --===============================
 -- PLUGIN SETUPS
@@ -147,6 +152,21 @@ vim.keymap.set("n", "<C-_>", function()
 	require("fzf-lua").lgrep_curbuf()
 end, { desc = "FZF Current Buffer Grep" })
 
+require("fzf-lua").setup({
+	winopts = {
+		height = 0.85,
+		width = 0.80,
+		row = 0.35,
+		col = 0.50,
+		border = "rounded",
+		preview = {
+			border = "border",
+			layout = "horizontal",
+			horizontal = "right:50%",
+		},
+	},
+})
+
 -- mini.nvim
 require("mini.ai").setup({})
 require("mini.comment").setup({})
@@ -202,3 +222,7 @@ vim.keymap.set("n", "<leader>hd", function()
 	require("gitsigns").diffthis()
 end, { desc = "Diff this" })
 
+
+-- markdown-preview
+vim.g.mkdp_filetypes = { "markdown" }
+vim.g.mkdp_browser = "firefox"
