@@ -1,5 +1,5 @@
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("minisummer")
+vim.cmd.colorscheme("catppuccin")
 
 local function set_transparent() -- set UI components to transparent
 	local groups = {

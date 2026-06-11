@@ -209,7 +209,7 @@ do
 			"c",
 			"cpp",
 			"css",
-			"go",
+			-- "go",
 			"html",
 			"javascript",
 			"javascriptreact",

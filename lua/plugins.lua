@@ -113,7 +113,7 @@ require("nvim-tree").setup({
 		group_empty = true,
 	},
 })
-vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<C-\\>", function()
 	require("nvim-tree.api").tree.toggle()
 end, { desc = "Toggle NvimTree" })
 
