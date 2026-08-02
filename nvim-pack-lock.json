@@ -9,6 +9,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "cendre": {
+      "rev": "b856bdc9a5d0aec64fd5001225f7b2d1a8c6b0fe",
+      "src": "https://github.com/Aejkatappaja/cendre"
+    },
     "efmls-configs-nvim": {
       "rev": "5dc52088c231f2721f545570fcb541b04802ce6b",
       "src": "https://github.com/creativenull/efmls-configs-nvim"

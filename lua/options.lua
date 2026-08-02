@@ -1,32 +1,44 @@
 vim.opt.termguicolors = true
+
 require("onedark").setup({
-	style = "darker",
+    style = "darker",
 })
-require("onedark").load()
+
+require("cendre").setup({
+    background = "hard", -- hard | medium | soft
+    italics = "true",
+    transparent = "true",
+    on_highlights = function(hl, c)
+        hl.Comment = { fg = c.bg5 }
+    end,
+})
+require("cendre").load()
+-- require("onedark").load()
 -- vim.cmd.colorscheme("miniwinter")
 
 local function set_transparent() -- set UI components to transparent
-	local groups = {
-		"Normal",
-		"NormalNC",
-		"EndOfBuffer",
-		"NormalFloat",
-		"FloatBorder",
-		"SignColumn",
-		"StatusLine",
-		"StatusLineNC",
-		"TabLine",
-		"TabLineFill",
-		"TabLineSel",
-		"ColorColumn",
-	}
-	for _, g in ipairs(groups) do
-		vim.api.nvim_set_hl(0, g, { bg = "none" })
-	end
-	vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
+    local groups = {
+        "Normal",
+        "NormalNC",
+        "EndOfBuffer",
+        "NormalFloat",
+        "FloatBorder",
+        "SignColumn",
+        "StatusLine",
+        "StatusLineNC",
+        "TabLine",
+        "TabLineFill",
+        "TabLineSel",
+        "ColorColumn",
+    }
+    for _, g in ipairs(groups) do
+        vim.api.nvim_set_hl(0, g, { bg = "none" })
+    end
+    vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
 end
 
-set_transparent()
+-- Cendre give options for transparent = true, that does this.
+-- set_transparent()
 
 -- ========================================
 -- OPTIONS
@@ -70,62 +82,62 @@ vim.opt.fillchars = { eob = " " } -- hide ~ on empty lines
 -- ====================
 local undodir = vim.fn.expand("~/.vim/undodir")
 if
-	vim.fn.isdirectory(undodir) == 0 -- create undodir if nonexistent
-then
-	vim.fn.mkdir(undodir, "p")
-end
-vim.opt.undodir = undodir
+    vim.fn.isdirectory(undodir) == 0 -- create undodir if nonexistent
+    then
+        vim.fn.mkdir(undodir, "p")
+    end
+    vim.opt.undodir = undodir
 
--- ================
--- OPTIONS contd.
--- ================
-vim.opt.backup = false -- do not create backup file
-vim.opt.writebackup = false -- do not write to a backup file
-vim.opt.swapfile = false -- do not create a swapfile
-vim.opt.undofile = true -- do create an undo file
-vim.opt.updatetime = 300 -- faster completion
-vim.opt.timeoutlen = 500 -- timeout duration
-vim.opt.ttimeoutlen = 0 -- key code timeout
-vim.opt.autoread = true -- autoreload changes if outside of neovim
-vim.opt.autowrite = false -- do not auto-save
+    -- ================
+    -- OPTIONS contd.
+    -- ================
+    vim.opt.backup = false -- do not create backup file
+    vim.opt.writebackup = false -- do not write to a backup file
+    vim.opt.swapfile = false -- do not create a swapfile
+    vim.opt.undofile = true -- do create an undo file
+    vim.opt.updatetime = 300 -- faster completion
+    vim.opt.timeoutlen = 500 -- timeout duration
+    vim.opt.ttimeoutlen = 0 -- key code timeout
+    vim.opt.autoread = true -- autoreload changes if outside of neovim
+    vim.opt.autowrite = false -- do not auto-save
 
-vim.opt.hidden = true -- allow hidden buffers
-vim.opt.errorbells = false -- no error sounds
-vim.opt.backspace = "indent,eol,start" -- better backspace behaviour
-vim.opt.autochdir = false -- do not auto change directory
-vim.opt.iskeyword:append("-") -- include - in words
-vim.opt.path:append("**") -- include subdirs in search
-vim.opt.selection = "inclusive" -- include last char in selection
-vim.opt.mouse = "a" -- enale mouse support
-vim.opt.clipboard:append("unnamedplus") -- use system clipboard
-vim.opt.modifiable = true -- allow buffer modifications
-vim.opt.encoding = "utf-8" -- set encoding
+    vim.opt.hidden = true -- allow hidden buffers
+    vim.opt.errorbells = false -- no error sounds
+    vim.opt.backspace = "indent,eol,start" -- better backspace behaviour
+    vim.opt.autochdir = false -- do not auto change directory
+    vim.opt.iskeyword:append("-") -- include - in words
+    vim.opt.path:append("**") -- include subdirs in search
+    vim.opt.selection = "inclusive" -- include last char in selection
+    vim.opt.mouse = "a" -- enale mouse support
+    vim.opt.clipboard:append("unnamedplus") -- use system clipboard
+    vim.opt.modifiable = true -- allow buffer modifications
+    vim.opt.encoding = "utf-8" -- set encoding
 
-vim.opt.guicursor =
-	"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175" -- cursor blinking and setting
+    vim.opt.guicursor =
+    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175" -- cursor blinking and setting
 
--- =======================================================================
--- FOLDS [requires treesitter available at runtime; safe fallback if not]
--- =======================================================================
-vim.opt.foldmethod = "expr" -- use expression for folding
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter for folding
-vim.opt.foldlevel = 99 -- start with all folds open
+    -- =======================================================================
+    -- FOLDS [requires treesitter available at runtime; safe fallback if not]
+    -- =======================================================================
+    vim.opt.foldmethod = "expr" -- use expression for folding
+    vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter for folding
+    vim.opt.foldlevel = 99 -- start with all folds open
 
--- ======================
--- OPTIONS contd.
--- ======================
-vim.opt.splitbelow = true -- horizontal splits go below
-vim.opt.splitright = true -- vertical splits go right
+    -- ======================
+    -- OPTIONS contd.
+    -- ======================
+    vim.opt.splitbelow = true -- horizontal splits go below
+    vim.opt.splitright = true -- vertical splits go right
 
-vim.opt.wildmenu = true -- tab completion
-vim.opt.wildmode = "longest:full,full" -- complete longest common match, full completion list, cycle through with Tab
-vim.opt.diffopt:append("linematch:60") -- improve diff display
-vim.opt.redrawtime = 10000 -- increase neovim redraw tolerance
-vim.opt.maxmempattern = 20000 -- increase max memory
+    vim.opt.wildmenu = true -- tab completion
+    vim.opt.wildmode = "longest:full,full" -- complete longest common match, full completion list, cycle through with Tab
+    vim.opt.diffopt:append("linematch:60") -- improve diff display
+    vim.opt.redrawtime = 10000 -- increase neovim redraw tolerance
+    vim.opt.maxmempattern = 20000 -- increase max memory
 
--- ======================
--- PADDING
--- ======================
+    -- ======================
+    -- PADDING
+    -- ======================
 
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

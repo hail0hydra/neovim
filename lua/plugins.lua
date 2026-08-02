@@ -30,6 +30,7 @@ vim.pack.add({
 
 	-- colorscheme
 	"https://github.com/navarasu/onedark.nvim",
+    "https://github.com/Aejkatappaja/cendre",
 })
 
 local function packadd(name)
