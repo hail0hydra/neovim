@@ -23,9 +23,13 @@ vim.pack.add({
 
 	-- snippets
 	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/iamcco/markdown-preview.nvim",
 
 	-- live server
 	"https://git.barrettruth.com/barrettruth/live-server.nvim",
+
+	-- colorscheme
+	"https://github.com/navarasu/onedark.nvim",
 })
 
 local function packadd(name)
@@ -45,6 +49,7 @@ packadd("efmls-configs-nvim")
 packadd("LuaSnip")
 packadd("friendly-snippets")
 packadd("live-server.nvim")
+packadd("markdown-preview.nvim")
 
 --===============================
 -- PLUGIN SETUPS
@@ -113,7 +118,8 @@ require("nvim-tree").setup({
 		group_empty = true,
 	},
 })
-vim.keymap.set("n", "<leader>e", function()
+-- vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<C-\\>", function()
 	require("nvim-tree.api").tree.toggle()
 end, { desc = "Toggle NvimTree" })
 
@@ -149,6 +155,35 @@ vim.keymap.set("n", "<C-/>", function()
 	require("fzf-lua").lgrep_curbuf()
 end, { desc = "FZF Current Buffer Grep" })
 
+-- require("fzf-lua").setup({
+-- 	fzf_opts = {
+-- 		["--layout"] = "reverse",
+-- 		["--info"] = "inline",
+-- 	},
+--
+-- 	winopts = {
+-- 		border = "rounded",
+-- 		height = 0.85,
+-- 		width = 0.80,
+-- 		row = 0.35,
+-- 		col = 0.50,
+--
+-- 		preview = {
+-- 			border = "rounded",
+-- 			layout = "horizontal",
+-- 			horizontal = "right:50%",
+-- 		},
+-- 	},
+--
+-- 	files = {
+-- 		hidden = true,
+-- 	},
+--
+-- 	grep = {
+-- 		hidden = true,
+-- 	},
+-- })
+
 -- mini.nvim
 require("mini.ai").setup({})
 require("mini.comment").setup({})
@@ -159,7 +194,11 @@ require("mini.indentscope").setup({})
 require("mini.pairs").setup({})
 require("mini.trailspace").setup({})
 require("mini.bufremove").setup({})
-require("mini.notify").setup({})
+require("mini.notify").setup({
+    lsp_progress = {
+        enable = false,
+    },
+})
 require("mini.icons").setup({})
 
 -- gitsigns
@@ -203,3 +242,7 @@ end, { desc = "Toggle inline blame" })
 vim.keymap.set("n", "<leader>hd", function()
 	require("gitsigns").diffthis()
 end, { desc = "Diff this" })
+
+-- markdown-preview
+vim.g.mkdp_filetypes = { "markdown" }
+-- vim.g.mkdp_browser = "google-chrome"

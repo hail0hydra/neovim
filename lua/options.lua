@@ -1,5 +1,9 @@
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("habamax")
+require("onedark").setup({
+	style = "darker",
+})
+require("onedark").load()
+-- vim.cmd.colorscheme("miniwinter")
 
 local function set_transparent() -- set UI components to transparent
 	local groups = {
@@ -49,7 +53,7 @@ vim.opt.incsearch = true -- show matches as you type
 vim.opt.signcolumn = "yes" -- always show a signcolumn
 vim.opt.colorcolumn = "100" -- show a column at 100 position chars
 vim.opt.showmatch = true -- highlights matching brackets
-vim.opt.cmdheight = 1 -- single line command line
+vim.opt.cmdheight = 0 -- single line command line
 vim.opt.completeopt = "menuone,noinsert,noselect" -- completion options
 vim.opt.showmode = false -- don't show mode instead have it in status line
 vim.opt.pumheight = 10 -- popup menu height

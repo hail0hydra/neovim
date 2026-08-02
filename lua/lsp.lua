@@ -182,6 +182,16 @@ vim.lsp.config("cssls", {
 	},
 })
 
+vim.lsp.config("kotlin_lsp", {
+    root_markers = {
+        "settings.gradle.kts",
+        "settings.gradle",
+        "build.gradle.kts",
+        "build.gradle",
+        ".git",
+    },
+})
+
 do
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
@@ -205,18 +215,18 @@ do
 
 	vim.lsp.config("efm", {
 		filetypes = {
-			"c",
-			"cpp",
+			-- "c",
+			-- "cpp",
 			"css",
-			"go",
-			"html",
+			-- "go",
+			-- "html",
 			"javascript",
 			"javascriptreact",
 			"json",
 			"jsonc",
-			"lua",
+			-- "lua",
 			"markdown",
-			"python",
+			-- "python",
 			"sh",
 			"typescript",
 			"typescriptreact",
@@ -258,6 +268,7 @@ vim.lsp.enable({
 	"efm",
 	"html",
 	"cssls",
+    "kotlin_lsp"
 })
 
 -- snippets
