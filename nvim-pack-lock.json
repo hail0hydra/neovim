@@ -10,11 +10,11 @@
       "version": "1.0.0 - 2.0.0"
     },
     "cendre": {
-      "rev": "b856bdc9a5d0aec64fd5001225f7b2d1a8c6b0fe",
+      "rev": "6c6e8823515257e6a779ab9a0b5eeba39818c4f1",
       "src": "https://github.com/Aejkatappaja/cendre"
     },
     "efmls-configs-nvim": {
-      "rev": "5dc52088c231f2721f545570fcb541b04802ce6b",
+      "rev": "e872dc195336716b19023b7a4dd9f689352acc8d",
       "src": "https://github.com/creativenull/efmls-configs-nvim"
     },
     "friendly-snippets": {
@@ -22,11 +22,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "3ff77862f6c62f7b850668435ae43aa026de8758",
+      "rev": "28440c741e927592877514fba3db21eb188caec8",
       "src": "https://www.github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
+      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
       "src": "https://www.github.com/lewis6991/gitsigns.nvim"
     },
     "live-server.nvim": {
@@ -38,23 +38,23 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason.nvim": {
-      "rev": "cbf8d285e1462dd24acf3507817be2bbcb035919",
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "264b5c8fc6e82212af0dc5c345145cfa916efeb6",
+      "rev": "8cef23520832134c05e4524e49f0468623501053",
       "src": "https://www.github.com/echasnovski/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "246572944c2a1e2a646c2e7609ff619b0fe74c18",
+      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
       "src": "https://www.github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree.lua": {
-      "rev": "07f541fcaa4a5ae019598240362449ab7e9812b3",
+      "rev": "b2aadda94b107480c48e548d6db51c6840b7b33c",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "rev": "7b6cc8949f9999c5ed91436cbe24aa5f99c42025",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "onedark.nvim": {

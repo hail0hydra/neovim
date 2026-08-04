@@ -9,6 +9,8 @@ local diagnostic_signs = {
     Info = "",
 }
 
+local notified = {}
+
 vim.diagnostic.config({
     virtual_text = { prefix = "●", spacing = 4 },
     signs = {
@@ -51,6 +53,19 @@ local function lsp_on_attach(ev)
     if client then -- remove colors imposed by LSP. Retain TSInstall colors
         client.server_capabilities.semanticTokensProvider = nil
     end
+
+
+    -- Notify only once per LSP client name
+    if not notified[client.name] then
+        notified[client.name] = true
+
+        vim.notify(
+            string.format("󰒋 %s attached", client.name),
+            vim.log.levels.INFO,
+            { title = "LSP" }
+        )
+    end
+
 
     local bufnr = ev.buf
     local opts = { noremap = true, silent = true, buffer = bufnr }
